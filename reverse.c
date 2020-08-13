@@ -4,7 +4,7 @@
 
 int main() {
 
-    int N,i,j,a[1000],b[1000];
+    int N,i,j,flag,a[1000];
 
     printf("Enter the number of elements in array\n");
     scanf("%d",&N);
@@ -13,12 +13,20 @@ int main() {
     for(i=0;i<N;i++)
        scanf("%d",&a[i]);
 
-    for(i=N-1,j=0;i>=0;i--,j++) //copying array elements into b from a in reverse order
-       b[j]=a[i];
+    j = i-1;
+    i = 0;
+
+    while(i<j) {   //replacing elements from first with  elements from last one by one
+        flag =a[i];
+        a[i] =a[j];
+        a[j]=flag;
+        i++;
+        j--;
+    }
 
     printf("Reversed array is:\n");
-    for(j=0;j<N;j++)
-        printf("%d\n",b[j]);
+    for(i=0;i<N;i++)
+        printf("%d\n",a[i]);
 
     return 0;
 
